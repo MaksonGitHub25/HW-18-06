@@ -3,12 +3,8 @@ alert("Hello Player");
 const randomNum = Math.floor(Math.random() * 101);
 console.log("Random Number:", randomNum);
 
+const obj = {};
 let difference;
-
-// const button = document.getElementById('button');
-// button.addEventListener('click', talkingWithUser);
-
-checkUserNum();
 
 function askUserNum(){
     userAnswer = +prompt("Try to guess my number");
@@ -17,7 +13,7 @@ function askUserNum(){
     return userAnswer;
 }
 
-function checkUserNum() {
+function askAndCheck() {
     askUserNum();
     while (true) {
         if (userAnswer != randomNum) {
@@ -29,7 +25,7 @@ function checkUserNum() {
             alert(`No! Try to guess my number again. Ur number is ${difference} than expected`);
             isPlayAgian = confirm('Do you wanna continue?');
             if (isPlayAgian == true){
-                checkUserNum();
+                askUserNum();
             } else {
                 alert('Bye-Bye');
                 break;
@@ -51,6 +47,34 @@ function Congratulations() {
     }
 }
 
+function dopTask(){
+    while (true) {
+        userObjName = prompt('What is the name of the key?');
+        userObjValue = prompt('What is the value of the key?');
+        if (
+            userObjName == '' ||
+            userObjName == null ||
+            userObjValue == '' ||
+            userObjValue == null
+        ){
+            break;
+        } else {
+            if (parseInt(userObjValue)){
+                userObjValue = parseInt(userObjValue); 
+            }
+            obj[userObjName] = userObjValue;
+            console.log(obj);
+        }
+    };
+}
+
+mainGameBtn.addEventListener('click', askAndCheck);
+dopTaskBtn.addEventListener('click', dopTask);
+
+
+
+// сделать чтоб когда чел негр вводил не число в игре ему говорили что он додик и проверку на NaN
+// сделать подсветку тексту в alert
 
 //* Создать программу, которая будет предлагать пользователю угадать число, которое предварительно должно быть загадано (создано в коде программы). В случае неверного ответа, программа должна предложить пользователю очередную возможность угадывать числа, дополнительно сообщив что число, которое он только что ввёл, больше или же меньше, чем загаданное программой число. Если же ответ верный, то пользователю должно поступить предложение завершить этот процесс или же продолжить (дальнейшая судьба программы не важна).
 
