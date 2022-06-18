@@ -3,7 +3,6 @@ alert("Hello Player");
 const randomNum = Math.floor(Math.random() * 101);
 console.log("Random Number:", randomNum);
 
-let isUserAnswerTrue;
 let difference;
 
 // const button = document.getElementById('button');
