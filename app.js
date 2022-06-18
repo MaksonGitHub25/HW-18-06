@@ -16,23 +16,30 @@ function askUserNum(){
 function askAndCheck() {
     askUserNum();
     while (true) {
-        if (userAnswer != randomNum) {
-            if (userAnswer > randomNum) {
-                difference = "more";
-            } else if (userAnswer < randomNum) {
-                difference = "less";
-            }
-            alert(`No! Try to guess my number again. Ur number is ${difference} than expected`);
-            isPlayAgian = confirm('Do you wanna continue?');
-            if (isPlayAgian == true){
-                askUserNum();
-            } else {
-                alert('Bye-Bye');
+        if (isNaN(userAnswer)) {
+            alert('You entered incorrect num!');
+            askUserNum();
+        } else {
+            if (userAnswer != randomNum) {
+                if (userAnswer > randomNum) {
+                    difference = "more";
+                } else if (userAnswer < randomNum) {
+                    difference = "less";
+                }
+
+                alert(`No! Try to guess my number again. Ur number is ${difference} than expected`);
+                isPlayAgian = confirm('Do you wanna continue?');
+
+                if (isPlayAgian == true){
+                    askUserNum();
+                } else {
+                    alert('Bye-Bye');
+                    break;
+                }
+            } else if (userAnswer == randomNum){
+                Congratulations();
                 break;
             }
-        } else if (userAnswer == randomNum){
-            Congratulations();
-            break;
         }
     }
 }
@@ -70,6 +77,3 @@ function dopTask(){
 
 mainGameBtn.addEventListener('click', askAndCheck);
 dopTaskBtn.addEventListener('click', dopTask);
-
-// сделать чтоб когда чел негр вводил не число в игре ему говорили что он додик 
-// и проверку на NaN
